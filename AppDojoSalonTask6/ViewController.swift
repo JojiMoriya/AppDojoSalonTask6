@@ -12,6 +12,8 @@ class ViewController: UIViewController {
     @IBOutlet private weak var randomNumberLabel: UILabel!
     @IBOutlet private weak var slider: UISlider!
     
+    private var answer: Int = 0
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -24,19 +26,25 @@ class ViewController: UIViewController {
 
     @IBAction func judgeButtonPressed(_ sender: UIButton) {
         
-        if Int(slider.value) == Int(randomNumberLabel.text!) {
-            alert(message: "あたり！\nあなたの結果: \(Int(slider.value))")
+        let yourValue = Int(slider.value)
+        
+        let firstLine: String
+        
+        if yourValue == answer {
+            firstLine = "あたり！"
         } else {
-            alert(message: "はずれ！\nあなたの結果: \(Int(slider.value))")
+            firstLine = "はずれ！"
         }
+        
+        alert(message: "\(firstLine)\nあなたの結果: \(yourValue)")
         
         makeRandomNumber()
         slider.value = 50
     }
     
     func makeRandomNumber() {
-        let randomValue = Int.random(in: 1...100)
-        randomNumberLabel.text = String(randomValue)
+        answer = Int.random(in: 1...100)
+        randomNumberLabel.text = String(answer)
     }
     
     func alert (message: String) {
