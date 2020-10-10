@@ -9,8 +9,8 @@ import UIKit
 
 class ViewController: UIViewController {
 
-    @IBOutlet weak var randomNumberLabel: UILabel!
-    @IBOutlet weak var slider: UISlider!
+    @IBOutlet private weak var randomNumberLabel: UILabel!
+    @IBOutlet private weak var slider: UISlider!
     
     override func viewDidLoad() {
         super.viewDidLoad()
